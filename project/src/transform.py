@@ -22,8 +22,8 @@ class QueryEnum(Enum):
     TOP_10_LEAST_REVENUE_CATEGORIES = "top_10_least_revenue_categories"
     TOP_10_REVENUE_CATEGORIES = "top_10_revenue_categories"
     REAL_VS_ESTIMATED_DELIVERED_TIME = "real_vs_estimated_delivered_time"
-    ORDERS_PER_DAY_AND_HOLIDAYS_2017 = "orders_per_day_and_holidays_2017"
-    GET_FREIGHT_VALUE_WEIGHT_RELATIONSHIP = "get_freight_value_weight_relationship"
+    #ORDERS_PER_DAY_AND_HOLIDAYS_2017 = "orders_per_day_and_holidays_2017"
+    #GET_FREIGHT_VALUE_WEIGHT_RELATIONSHIP = "get_freight_value_weight_relationship"
 
 
 def read_query(query_name: str) -> str:
@@ -138,9 +138,9 @@ def query_real_vs_estimated_delivered_time(database: Engine) -> QueryResult:
     query = read_query(QueryEnum.REAL_VS_ESTIMATED_DELIVERED_TIME.value)
     return QueryResult(query=query_name, result=read_sql(query, database))
 
-
+""""
 def query_freight_value_weight_relationship(database: Engine) -> QueryResult:
-    """Get the freight_value weight relation for delivered orders.
+    Get the freight_value weight relation for delivered orders.
 
     In this particular query, we want to evaluate if exists a correlation between
     the weight of the product and the value paid for delivery.
@@ -157,7 +157,7 @@ def query_freight_value_weight_relationship(database: Engine) -> QueryResult:
 
     Returns:
         QueryResult: The query for freight_value vs weight data.
-    """
+    
     query_name = QueryEnum.GET_FREIGHT_VALUE_WEIGHT_RELATIONSHIP.value
 
     # Get orders from olist_orders table
@@ -196,7 +196,7 @@ def query_freight_value_weight_relationship(database: Engine) -> QueryResult:
 
 
 def query_orders_per_day_and_holidays_2017(database: Engine) -> QueryResult:
-    """Get the query for orders per day and holidays in 2017.
+    Get the query for orders per day and holidays in 2017.
 
     In this query, we want to get a table with the relation between the number
     of orders made on each day and also information that indicates if that day was
@@ -210,7 +210,7 @@ def query_orders_per_day_and_holidays_2017(database: Engine) -> QueryResult:
 
     Returns:
         Query: The query for orders per day and holidays in 2017.
-    """
+    
     query_name = QueryEnum.ORDERS_PER_DAY_AND_HOLIDAYS_2017.value
 
     # Reading the public holidays from public_holidays table
@@ -251,7 +251,7 @@ def query_orders_per_day_and_holidays_2017(database: Engine) -> QueryResult:
     # la variable `aggregations` con el nombre y formato correspondiente.
     return QueryResult(query=query_name, result=result_df)
 
-
+"""
 def get_all_queries() -> List[Callable[[Engine], QueryResult]]:
     """Get all queries.
 
@@ -266,8 +266,8 @@ def get_all_queries() -> List[Callable[[Engine], QueryResult]]:
         query_top_10_least_revenue_categories,
         query_top_10_revenue_categories,
         query_real_vs_estimated_delivered_time,
-        query_orders_per_day_and_holidays_2017,
-        query_freight_value_weight_relationship,
+        #query_orders_per_day_and_holidays_2017,
+        #query_freight_value_weight_relationship,
     ]
 
 

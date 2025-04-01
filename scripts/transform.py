@@ -24,12 +24,11 @@ def transform_data() -> Dict[str, DataFrame]:
     # 1. Run the queries to transform the data
     query_results = run_queries(database=engine)
 
-
+    query_results = run_queries(database=engine)
     # 2. Show  the results of the queries
     for table_name, df in query_results.items():
         # Show the each table name and its type
         print(f"Table: {table_name}")
-        print(type(df))
-
-    print("Data transformed successfully!")
-    return query_results
+        print(df.head())  # Show the first 5 rows of each table
+    
+    return print("Data transformed successfully!")
