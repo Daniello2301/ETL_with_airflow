@@ -2,3 +2,5 @@
 dataset/
 # olist db file
 olist.db
+# python cache
+__pycache__/
